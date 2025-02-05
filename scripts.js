@@ -20,8 +20,18 @@ const handlingForms = {
     }
   },
   methods: {
-    addMember: function() {
-      this.members.push(this.newMember)
+    addMember: function () {
+      const areFieldsFilledIn = this.newMember.fname
+        && this.newMember.lname
+        && this.newMember.instrument;
+
+      if (!areFieldsFilledIn) {
+        alert("All fields must be filled!")
+        return;
+      }
+
+      this.members.push(this.newMember);
+      this.newMember = {};
     }
   }
 };
